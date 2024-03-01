@@ -19,15 +19,33 @@ function onConnect(){
     //Ici on met tout les pubs ?
 }
 
-function onMessageArrived(msg){
-    out_msg = "Message received" + msg.payloadString +"<br>";
-    out_msg = out_msg+"Message received Topic "+ msg.destinationName;
-    console.log(out_msg);
+function onMessageArrived(msg) {
+    var topic = msg.destinationName;
+    var payload = msg.payloadString;
 
-      // Traitement des messages MQTT
-      var message = msg.payloadString; // Récupérer le message
-      document.getElementById("txtTemperature").innerHTML = message;
+    console.log("Message received on topic: " + topic);
+    console.log("Payload: " + payload);
+
+    // Traitement des messages en fonction du topic
+    switch (topic) {
+        case "temperature":
+            // Traiter les données de température
+            document.getElementById("txtTemperature").innerHTML = payload;
+            break;
+        case "humidity":
+            // Traiter les données d'humidité
+            document.getElementById("txtHumidity").innerHTML = payload;
+            break;
+        case "light_intensity":
+            // Traiter les données d'intensité lumineuse
+            document.getElementById("txtLightIntensity").innerHTML = payload;
+            break;
+        default:
+            console.log("Topic non reconnu: " + topic);
+            break;
+    }
 }
+
 
 function MQTTconnect() {
     console.log("connecting to" + host + " " + port);
