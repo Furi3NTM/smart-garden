@@ -1,0 +1,127 @@
+:root {
+    
+    --green: #179a00; 
+    --dark-green:#1d6114;
+    --light-grey : #4b4b4b;
+    --darkgrey : #202020;
+
+    font-family: 'Poppins', sans-serif;
+    color: var(--darkgrey);
+
+  }
+
+/* DIV */
+.graph-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    
+}
+
+.delais-container{
+    margin-top: 3%;
+    margin-left: 3%;
+}
+
+
+/* TEXTE */ 
+.home-title {
+    display: flex;
+    justify-content: center;
+
+    font-size: 40px;
+    color: var(--green);
+}
+
+.delais-title{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.delais-subtitle{
+    font-size: 12px;
+    color: var(--light-grey);
+
+    margin-top: -20px;
+    margin-bottom: 20px;
+    margin-right: 3%;
+}
+
+
+/*.graph-subtitle{
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--light-grey);
+
+    margin-top: -20px;
+    margin-bottom: 20px;
+    margin-right: 3%;
+}*/
+
+
+/* INPUT */
+.input-temp, .input-hum, .input-light {
+    font-size: 15px;
+
+    padding: 15px;
+    margin-bottom: 10px;
+
+    border: 2px solid var(--green);
+    border-radius: 5px;
+}
+
+.input-temp:focus, .input-hum:focus, .input-light:focus{
+    outline: none !important;
+    border-color: var(--dark-green);
+}
+
+
+
+/* BUTTON */
+.delais-btn {
+  margin-top: 10px;
+  padding: 15px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px var(--green);
+  background-image: linear-gradient(45deg, #008a12 0%, #288035  51%, #60c969  100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.delais-btn:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.delais-btn:active {
+  transform: scale(0.95);
+}
+
+
+
+/* Media query pour les appareils mobiles */
+@media (max-width: 768px) {
+    .graph-container {
+        grid-template-columns:auto; 
+        grid-auto-flow: row; 
+        font-size: 20px; 
+        justify-content: start;
+        text-align: left;
+        margin-left: 3%;
+    }
+}
