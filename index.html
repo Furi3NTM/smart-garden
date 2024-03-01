@@ -6,6 +6,8 @@
     <title>Smart Garden</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"></script>
+
 
 
 </head>
@@ -18,7 +20,7 @@
         <hr>
 
         <div class="graph-container">
-            <p>Température</p>
+            <p id="txtTemperature">Température</p>
             <p>Humidité</p>
             <p>Lumière</p>
         </div>
@@ -35,7 +37,7 @@
         </div>
     </div>
     
-
+    <script src="MQTT.js"></script>
 </body>
 </html>
 
