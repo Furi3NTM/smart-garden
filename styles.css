@@ -3,6 +3,7 @@
     --green: #179a00; 
     --dark-green:#1d6114;
     --light-grey : #4b4b4b;
+    --hr : #8a8a8a;
     --darkgrey : #202020;
 
     font-family: 'Poppins', sans-serif;
@@ -138,6 +139,7 @@
 
 /* Media query pour les appareils mobiles */
 @media (max-width: 768px) {
+    
     .graph-container {
         grid-template-columns:auto; 
         grid-auto-flow: row; 
@@ -146,6 +148,25 @@
         text-align: left;
         margin-left: 3%;
     }
+
+    .light-container{
+        display: grid;
+        justify-content: center;
+    }
+
+    .graph-container{
+        justify-content: center;
+        text-align: center;
+    }
+
+    .subtitle-humidity, .subtitle-temp{
+        border-bottom: 1px solid var(--hr);
+        padding-bottom: 20px;
+       
+    }
+
+ 
+
 }
 
 
