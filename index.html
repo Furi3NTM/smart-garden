@@ -6,7 +6,8 @@
     <title>Smart Garden</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
-
+    <!-- Inclure Paho MQTT JavaScript Client -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.min.js"></script>
 
 </head>
 <body>
@@ -34,10 +35,13 @@
             <button class="delais-btn" type="submit"> Modifier le délais</button>
         </div>
     </div>
-    
+
+    <!-- Votre script MQTT personnalisé -->
+    <script src="MQTT.js"></script>
+    <!-- Ou inclure directement le script ici -->
+    <!--<script>
+        // Votre code JavaScript MQTT ici
+    </script>-->
 
 </body>
 </html>
-
-
-<!--<p class="graph-subtitle">En celcius</p>-->
