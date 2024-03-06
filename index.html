@@ -14,117 +14,74 @@
 
     <div class="container">
 
-        <h1 class="home-title"> Smart Garden </h1>
+        <h1 class="home-title">Smart Garden</h1>
+             <hr>
+                <div class="graph-container">
 
-        <hr>
+                    <div class="temp-container">
+                        <p id="txt-temp">Température</p>
+                        <div id="gauge-temperature"></div>
+                        <p id="subtitle-temp" class="subtitle-temp">Température ambiante</p>
+                    </div>
 
-        <div class="graph-container">
+                    <div class="humidity-container">
+                        <p id="txt-humidity">Humidité</p>
+                        <div id="gauge-humidity"></div>
+                        <p id="subtitle-humidity" class="subtitle-humidity">Humidité de l'air</p>
+                    </div>
 
-        <div class="temp-container">
-            <p id="txt-temp">Température</p>
-            <div id="gauge-temp"></div>
-            <p class="subtitle-temp">Température ambiante : 28° Celcius </p>
-        </div>
+                    <div class="light-container">
+                        <p id="txt-light">Lumière</p>
+                        <svg id="light-bulb" height="150px" width="150px " version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                        viewBox="0 0 512 512" xml:space="preserve">
+                <g>
+                    <g>
+                        <path id="bulb" d="M256,0C155.174,0,73.143,82.027,73.143,182.857c0,67.839,38.46,130.937,98.424,162.232l1.817,25.482
+                            c0.357,5.036,4.719,8.911,9.772,8.464c5.036-0.357,8.826-4.732,8.469-9.768l-2.187-30.661c-0.232-3.259-2.192-6.152-5.134-7.571
+                            c-56.42-27.348-92.875-85.518-92.875-148.178c0-90.741,73.826-164.571,164.571-164.571c90.745,0,164.571,73.83,164.571,164.571
+                            c0,66.919-39.969,126.652-101.821,152.196c-3.201,1.322-5.379,4.339-5.629,7.795l-3.978,55.661
+                            c-0.357,5.036,3.433,9.411,8.469,9.768c0.223,0.018,0.442,0.027,0.661,0.027c4.755,0,8.768-3.679,9.112-8.491l3.58-50.116
+                            c65.732-29.527,107.893-94.402,107.893-166.839C438.857,82.027,356.826,0,256,0z"/>
+                    </g>
+                </g>
+                <g>
+                    <g>
+                        <path d="M312.915,420.804l-118.857-27.429c-4.906-1.134-9.83,1.937-10.969,6.857c-1.134,4.92,1.933,9.83,6.853,10.964
+                            l118.857,27.429c0.692,0.161,1.384,0.232,2.067,0.232c4.161,0,7.924-2.857,8.902-7.089
+                            C320.902,426.848,317.835,421.937,312.915,420.804z"/>
+                    </g>
+                </g>
+                <g>
+                    <g>
+                        <path d="M312.915,457.375l-118.857-27.429c-4.906-1.134-9.83,1.937-10.969,6.857c-1.134,4.92,1.933,9.83,6.853,10.964
+                            l118.857,27.429c0.692,0.161,1.384,0.232,2.067,0.232c4.161,0,7.924-2.857,8.902-7.089
+                            C320.902,463.42,317.835,458.509,312.915,457.375z"/>
+                    </g>
+                </g>
+                <g>
+                    <g>
+                        <path d="M312.915,493.947l-118.857-27.429c-4.906-1.143-9.83,1.928-10.969,6.857c-1.134,4.92,1.933,9.83,6.853,10.964
+                            l118.857,27.429c0.692,0.161,1.384,0.232,2.067,0.232c4.161,0,7.924-2.857,8.902-7.089
+                            C320.902,499.991,317.835,495.08,312.915,493.947z"/>
+                    </g>
+                </g>
+                        </svg>
+                        <p id="subtitle-light" class="subtitle-light">État de la lumière</p>
+                    </div>
 
-        <div class="humidity-container">
-            <p id="txt-humidity">Humidité</p>
-            <div id="gauge-humidity"></div>
-            <p class="subtitle-humidity">Humidité de la terre : 40%</p>
-        </div>
-         
-
-        <div class="light-container">
-            <p id="txt-light">Lumière</p>
-            <svg id="light-bulb" height="150px" width="150px " version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-            viewBox="0 0 512 512" xml:space="preserve">
-       <g>
-           <g>
-               <path id="bulb" d="M256,0C155.174,0,73.143,82.027,73.143,182.857c0,67.839,38.46,130.937,98.424,162.232l1.817,25.482
-                   c0.357,5.036,4.719,8.911,9.772,8.464c5.036-0.357,8.826-4.732,8.469-9.768l-2.187-30.661c-0.232-3.259-2.192-6.152-5.134-7.571
-                   c-56.42-27.348-92.875-85.518-92.875-148.178c0-90.741,73.826-164.571,164.571-164.571c90.745,0,164.571,73.83,164.571,164.571
-                   c0,66.919-39.969,126.652-101.821,152.196c-3.201,1.322-5.379,4.339-5.629,7.795l-3.978,55.661
-                   c-0.357,5.036,3.433,9.411,8.469,9.768c0.223,0.018,0.442,0.027,0.661,0.027c4.755,0,8.768-3.679,9.112-8.491l3.58-50.116
-                   c65.732-29.527,107.893-94.402,107.893-166.839C438.857,82.027,356.826,0,256,0z"/>
-           </g>
-       </g>
-       <g>
-           <g>
-               <path d="M312.915,420.804l-118.857-27.429c-4.906-1.134-9.83,1.937-10.969,6.857c-1.134,4.92,1.933,9.83,6.853,10.964
-                   l118.857,27.429c0.692,0.161,1.384,0.232,2.067,0.232c4.161,0,7.924-2.857,8.902-7.089
-                   C320.902,426.848,317.835,421.937,312.915,420.804z"/>
-           </g>
-       </g>
-       <g>
-           <g>
-               <path d="M312.915,457.375l-118.857-27.429c-4.906-1.134-9.83,1.937-10.969,6.857c-1.134,4.92,1.933,9.83,6.853,10.964
-                   l118.857,27.429c0.692,0.161,1.384,0.232,2.067,0.232c4.161,0,7.924-2.857,8.902-7.089
-                   C320.902,463.42,317.835,458.509,312.915,457.375z"/>
-           </g>
-       </g>
-       <g>
-           <g>
-               <path d="M312.915,493.947l-118.857-27.429c-4.906-1.143-9.83,1.928-10.969,6.857c-1.134,4.92,1.933,9.83,6.853,10.964
-                   l118.857,27.429c0.692,0.161,1.384,0.232,2.067,0.232c4.161,0,7.924-2.857,8.902-7.089
-                   C320.902,499.991,317.835,495.08,312.915,493.947z"/>
-           </g>
-       </g>
-       </svg>
-       <p class="subtitle-light">Temps restant : 20 minutes</p>
-        </div>
-              
-
-        </div>
-
-        <hr>
-
-        <div class="delais-container">
-            <p class="delais-title">Interval </p>
-            <p class="delais-subtitle">Veuillez indiquer le délai en secondes entre chaque requête.</p>
-            <input class="input-temp" placeholder="Température" type="number"> </input>
-            <input class="input-hum" placeholder="Humidité" type="number"> </input>
-            <input class="input-light" placeholder="Lumière" type="number"> </input>
-            <button class="delais-btn" type="submit"> Modifier le délais</button>
-        </div>
-    </div>
+                </div>
+             <hr>
+                    <div class="delais-container">
+                        <p class="delais-title">Interval </p>
+                        <p class="delais-subtitle">Veuillez indiquer le délai en secondes entre chaque requête.</p>
+                        <input id="input-hygro" class="input-temp" placeholder="Hygrothermographe" type="number"> </input>
+                        <input id="input-light" class="input-light" placeholder="Photoresistor" type="number"> </input>
+                        <button id="delais-btn" class="delais-btn" type="submit"> Modifier le délais</button>
+                    </div>
+     </div>
     
-
-
-        <!-- Ajouter le script pour initialiser la jauge -->
-        <script>
-            // Créer une nouvelle instance de JustGage avec des options de configuration
-            var gauge = new JustGage({
-                id: "gauge-temp", 
-                value: 28, // Valeur initiale de la jauge
-                min: 0, // Valeur minimale de la jauge
-                max: 35, // Valeur maximale de la jauge
-                title: "Température", // Titre de la jauge (optionnel)
-                label: "Degré celcius", // Libellé de la valeur affichée (optionnel)
-                levelColors: ["#8fff98", "#4cbb17", "#115d33"],
-                
-                // Autres options de configuration...
-            });
-
-            var gauge = new JustGage({
-            id: "gauge-humidity", 
-            value: 40, // Valeur initiale de la jauge
-            min: 0, // Valeur minimale de la jauge
-            max: 100, // Valeur maximale de la jauge
-            title: "Humidity", // Titre de la jauge (optionnel)
-            label: "Pourcentage", // Libellé de la valeur affichée (optionnel)
-            levelColors: ["#8fff98", "#4cbb17", "#115d33"], // Couleurs pour les différents niveaux de la jauge
-        });
-
-    
-            // Exemples d'utilisation de l'API
-            // gauge.refresh(75, 100, 0, "Nouvelle valeur");
-            // gauge.update({ value: 50, min: 0, max: 200, label: "Mise à jour de la valeur" });
-            // gauge.destroy();
-        </script>
-        <script src="MQTT.js"></script>
-        <script src="light.js"></script>
+<script src="MQTT.js"></script>
+<script src="light.js"></script>
 
 </body>
 </html>
-
-
-<!--<p class="graph-subtitle">En celcius</p>-->
