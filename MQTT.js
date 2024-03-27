@@ -1,6 +1,6 @@
 var mqtt;
 var reconnectTimeout = 2000;
-var host = "172.16.207.47";   // Changer pour la bonne ip
+var host = "172.16.72.192";   // Changer pour la bonne ip
 var port = 9001;              // Changer pour le bon port
 
 
@@ -49,6 +49,7 @@ function onConnect(){
     mqtt.subscribe("temperature");
     mqtt.subscribe("humidity");
     mqtt.subscribe("light_intensity");
+    mqtt.subscribe("security_alert");
 }
 
 
@@ -82,6 +83,15 @@ function onMessageArrived(msg) {
                 document.getElementById("subtitle-light").innerHTML = "La lumière est fermé";
             }
             break;
+        case "security_alert":
+            if (payload === "true") {
+                // Afficher le modal d'alerte
+                document.getElementById('alert-modal').style.display = 'block';
+            } else {
+                // Cacher le modal d'alerte
+                document.getElementById('alert-modal').style.display = 'none';
+            }
+        break;
         // Ajouter d'autres cas pour d'autres sujets MQTT si nécessaire
         default:
             console.log("Topic non reconnu: " + topic);
