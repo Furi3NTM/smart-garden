@@ -35,13 +35,11 @@ LED_BRIGHTNESS = 255     # Set to 0 for darkest and 255 for brightest
 LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
 LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
-
 def initialize_led():
     # Initialisez la LED
     led_strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
     led_strip.begin()
     return led_strip
-
 
 # LED alert
 redLED = LED(13)  #33 en BOARD
@@ -117,6 +115,7 @@ def on_message(client, userdata, message):
 
 # Création d'une instance client MQTT pour WebSocket
 mqtt_ws_client = mqtt.Client("WebSocketSensorClient", transport='websockets')
+
 mqtt_ws_client.on_connect = on_connect
 mqtt_ws_client.on_publish = on_publish
 mqtt_ws_client.on_message = on_message
@@ -163,6 +162,39 @@ def internet_connection_thread():
             greenLED.off()
         time.sleep(60)
         
+# --------------------------------------------------------------------------------------------------------#
+
+# Water pump
+def WaterPump():
+    try:
+        # Allumer la pompe
+        GPIO.output(PIN_POMPE, GPIO.LOW)
+        print("Allumage de la pompe...")
+        time.sleep(2)  # Laisser la pompe fonctionner pendant 5 secondes
+        # Éteindre la pompe
+        GPIO.output(PIN_POMPE, GPIO.HIGH)
+        print("Arrêt de la pompe...")
+    except KeyboardInterrupt:
+        print("Arrêt forcé de l'utilisateur.")
+
+
+def SecuritySensor():
+    global security_alert
+    ultrasonic = DistanceSensor(echo=20, trigger=25)
+    try:
+        while True:
+            print(ultrasonic.distance)
+            time.sleep(1)
+            if ultrasonic.distance <= 0.6:
+                security_alert = True
+                print(security_alert)
+            else :
+                security_alert = False    
+    except KeyboardInterrupt:
+        # Arrête la boucle lorsque l'utilisateur appuie sur Ctrl+C
+        print("Arrêt de la mesure de distance.")
+
+
 # --------------------------------------------------------------------------------------------------------#
 
 # Water pump
@@ -314,7 +346,6 @@ def clear_lcd_periodically():
         time.sleep(59)    
         lcd.clear()
                
-
    
 PCF8574_address = 0x27
 PCF8574A_address = 0x3F  
@@ -423,13 +454,12 @@ def main():
     hygro_thread = threading.Thread(target=Hygrothermographe)
     photoresistor_thread = threading.Thread(target=Photoresistor)
     moistureSensor_thread = threading.Thread(target=MoistureSensor)
-    led_thread = threading.Thread(target=LED_animation, args=(led_strip,))
+    led_thread = threading.Thread(target=LED_animation)
     lcd_thread = threading.Thread(target=LCD_panel)
     security_sensor_thread  = threading.Thread(target=SecuritySensor)
     internet_thread = threading.Thread(target=internet_connection_thread)
     gambling_thread = threading.Thread(target=Gambling)
     clear_lcd_thread = threading.Thread(target=clear_lcd_periodically)
-
     
     hygro_thread.start()
     photoresistor_thread.start()
@@ -440,7 +470,6 @@ def main():
     internet_thread.start()
     gambling_thread.start()
     clear_lcd_thread.start()
-
     try:
         hygro_thread.join()
         photoresistor_thread.join()
