@@ -1,2 +1,1 @@
-# smart-garden
-Smart Garden
+# Smart Garden - Le Grand Wôlinak 
