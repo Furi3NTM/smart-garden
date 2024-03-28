@@ -180,7 +180,7 @@
         width: auto;
         height: auto;
         overflow: auto;
-        border: 2px solid red;
+        border: 2px solid green;
         border-radius: 5px;
         animation: blink-animation 6s infinite;
           
