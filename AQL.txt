@@ -1,0 +1,36 @@
+# Fichier AQL pour l'Application smartGarden
+
+## Objectif
+Ce document décrit les procédures et standards d'assurance qualité pour l'Application smartGarden. L'objectif est d'assurer que l'application est fiable, performante, et fournit des informations météorologiques précises.
+
+## Standards de Codage
+- Utiliser des noms de variables descriptifs et en camelCase.
+- La plupart des fonctions doivent avoir des commentaires décrivant leur but.
+- Respecter le principe DRY (Don't Repeat Yourself).
+
+## Procédures de Test
+### Tests Unitaires
+- Aucun test n'a été fait à cet effet sur html css, parce que c'est juste du front 
+- Pour la vm, un serveur MQTT et un serveur MYSQL a été installé, des tets ont été faits en générent des users avec différents droits ( chmod 557 ) 
+
+### Tests d'Intégration
+- Tester l'intégration des serveurs avec les outils Data grip et MQTT Explorer
+- Vérifier que l'application gère correctement les erreurs de réseau.
+- Tester les arlertes au niveau du html 
+
+### Tests d'Interface Utilisateur
+- S'assurer que l'application affiche correctement les informations collectées par le pi 
+- Tester les le dynamisme des data en enlevant de l'eau dans le réservoir, mettre de la lumière sur les capteurs de limuière et autres 
+
+## Critères d'Acceptation
+- L'application doit afficher les alertes liées au jardin 
+- Le temps d'envoi des data est défini par l'utilisateur 
+- L'application doit gérer les erreurs de réseau en affichant des messages dans les fichiers log approprrié.
+
+## Procédures de Révision de Code
+- Chaque Pull Request doit être revue par au moins un autre développeur.
+- La revue de code doit vérifier la conformité aux standards de codage et l'efficacité du code.
+
+## Gestion des Bugs
+- Les bugs critiques doivent être corrigés avant la prochaine mise à jour. Les bugs mineurs seront programmés en fonction de leur priorité.
+- Les fonctionnalités abandonnées doivent être listée 
