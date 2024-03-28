@@ -1,0 +1,12 @@
+En ce qui concerne la sécurité de notre jardin, plusieurs aspects ne doivent pas être négligés, et c'est ce que nous avons soigneusement fait... bien sûr.
+
+Du côté physique de notre jardin, il y a un détecteur de distance qui surveille les abords. Lorsqu'une personne s'approche trop près, une alerte est automatiquement envoyée à notre application web
+pour nous avertir de la présence de cet intrus. De plus, un écran LCD affiche le message "GET OUT MY GARDEN" pour dissuader toute intrusion.
+
+Du côté du serveur, nous utilisons actuellement un Broker MQTT anonyme, ce qui signifie que tout le monde peut s'y abonner et y publier des messages. Bien que cela ne soit pas optimal en termes de sécurité,
+nous n'avons malheureusement pas encore mis en place de mécanismes d'identification pour se connecter à notre Broker MQTT.
+
+En ce qui concerne l'application, elle ne comporte actuellement aucun système de connexion. Elle se contente d'afficher les données. Par conséquent, si nous la mettons en ligne sur un serveur, 
+tout le monde y aura accès. Cependant, étant donné la nature de notre projet, cela est jugé acceptable.
+
+
