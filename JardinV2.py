@@ -77,6 +77,9 @@ humidity_topic = "humidity"
 light_intensity_topic = "light_intensity" 
 moisture_sensor_topic = "moisture_sensor"
 security_alert_topic = "security_alert"
+high_water_alert_topic = "high_water_alert"
+low_water_alert_topic = "low_water_alert"
+gamgling_money_topic = "gamgling_money"
 
 # Fonction appelée lorsque le client se connecte au serveur
 def on_connect(client, userdata, flags, rc):
@@ -330,6 +333,7 @@ lcd = Adafruit_CharLCD(pin_rs=0, pin_e=2, pins_db=[4,5,6,7], GPIO=mcp)
 def update_led_color(win):
     # Séquence de couleurs RVB pour la LED de victoire
     win_colors = [Color(255,0,0),Color(0,255,0),Color(0,0,255)]
+
     if win:
         # Gagné : Faites défiler les couleurs sur la LED de victoire
          for c in range(3):
@@ -350,12 +354,13 @@ def Gambling():
     while True:
      with lcd_lock:
         time.sleep(1)   
-        random_number1 = random.randint(1, 5)
-        random_number2 = random.randint(1, 5)
+        random_number1 = random.randint(1, 10)
+        random_number2 = random.randint(1, 10)
         random_price = random.randint(1, 1000)
         print("1 - Nombre aléatoire entre 1 et 10 :", random_number1)
         print("2 - Nombre aléatoire entre 1 et 10 :", random_number2)
         global_gambling_money = global_gambling_money - 100
+        send_data_to_mqtt_ws(gamgling_money_topic, global_gambling_money)
         
         if random_number1 == random_number2 : 
             global_gambling_money += random_price
@@ -394,16 +399,23 @@ def destroy():
 
 # Main 
 def main():
-    global low_water_alert
+    global low_water_alert, high_water_alert
 
     if low_water_alert:
         yellowLED.on()
         greenLED.off()
         redLED.off()
+        send_data_to_mqtt_ws(low_water_alert_topic, True)
+    else :
+          send_data_to_mqtt_ws(low_water_alert_topic, False)
+
     if high_water_alert:
         redLED.on()
         greenLED.off()
-        yellowLED.off()    
+        yellowLED.off()  
+        send_data_to_mqtt_ws(high_water_alert_topic, True)
+    else :
+          send_data_to_mqtt_ws(high_water_alert_topic, False)  
 
     mqtt_ws_client.loop_start()  # Démarrage de la boucle d'événements MQTT pour WebSocket
 
@@ -417,7 +429,6 @@ def main():
     internet_thread = threading.Thread(target=internet_connection_thread)
     gambling_thread = threading.Thread(target=Gambling)
     clear_lcd_thread = threading.Thread(target=clear_lcd_periodically)
- 
 
     
     hygro_thread.start()
